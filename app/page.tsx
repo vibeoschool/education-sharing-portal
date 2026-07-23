@@ -400,7 +400,7 @@ export default function Home() {
           <div className="hero-bottom">
             <div className="quick-links">
               <span>빠른 탐색</span>
-              {["과학", "출결", "역사", "평가·성적"].map((label) => (
+              {["업무간소화", "수업도구", "교수학습자료", "과학"].map((label) => (
                 <button
                   key={label}
                   onClick={() => {
