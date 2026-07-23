@@ -251,6 +251,12 @@ export default function Home() {
     () => new Set(materials.map((material) => material.author)).size,
     [materials],
   );
+  const workMaterialCount = materials.filter(
+    (material) => material.type === "업무간소화",
+  ).length;
+  const learningMaterialCount = materials.filter(
+    (material) => material.type === "교수학습자료",
+  ).length;
 
   function submitSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -293,35 +299,56 @@ export default function Home() {
         <div className="hero-glow glow-two" />
         <div className="hero-grid" />
         <div className="hero-inner">
-          <p className="eyebrow">
-            <span aria-hidden="true">✦</span>
-            OCEAN MIDDLE SCHOOL · TEACHER-MADE
-          </p>
-          <h1>
-            선생님이 좋은 아이디어가
-            <br />
-            <em>수업 효율화와 업무간화</em>에 큰 힘이 됩니다
-          </h1>
-          <p className="hero-copy">
-            오션중학교 선생님들이 직접 만든 웹앱과 교육자료를 한곳에서
-            발견하고, 바로 수업과 학교 업무에 활용하세요.
-          </p>
+          <div className="hero-intro">
+            <p className="eyebrow">
+              <span aria-hidden="true">✦</span>
+              OCEAN MIDDLE SCHOOL · TEACHER-MADE
+            </p>
+            <h1>
+              선생님이 좋은 아이디어가
+              <br />
+              <em>수업 효율화와 업무간화</em>에 큰 힘이 됩니다
+            </h1>
+            <p className="hero-copy">
+              오션중학교 선생님들이 직접 만든 웹앱과 교육자료를 한곳에서
+              발견하고, 바로 수업과 학교 업무에 활용하세요.
+            </p>
 
-          <form className="hero-search" onSubmit={submitSearch}>
-            <label className="sr-only" htmlFor="hero-search">
-              교육자료 검색
-            </label>
-            <span className="search-glyph">
-              <SearchIcon />
-            </span>
-            <input
-              id="hero-search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="자료명, 과목, 업무 태그, 선생님 이름으로 검색"
-            />
-            <button type="submit">검색하기</button>
-          </form>
+            <form className="hero-search" onSubmit={submitSearch}>
+              <label className="sr-only" htmlFor="hero-search">
+                교육자료 검색
+              </label>
+              <span className="search-glyph">
+                <SearchIcon />
+              </span>
+              <input
+                id="hero-search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="자료명, 과목, 업무 태그, 선생님 이름으로 검색"
+              />
+              <button type="submit">자료 찾기</button>
+            </form>
+          </div>
+
+          <aside className="hero-metrics" aria-label="나눔터 현황">
+            <div>
+              <strong>{materials.length}</strong>
+              <span>공유된 자료</span>
+            </div>
+            <div>
+              <strong>{Math.max(uniqueTeachers, 1)}</strong>
+              <span>참여 선생님</span>
+            </div>
+            <div>
+              <strong>{workMaterialCount}</strong>
+              <span>업무 도구</span>
+            </div>
+            <div>
+              <strong>{learningMaterialCount}</strong>
+              <span>수업 자료</span>
+            </div>
+          </aside>
 
           <div className="hero-bottom">
             <div className="quick-links">
@@ -346,31 +373,6 @@ export default function Home() {
               {catalogUpdated ? "공유 자료와 자동 동기화 중" : "새로운 자료를 계속 준비하고 있어요"}
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="stats" aria-label="나눔터 현황">
-        <div>
-          <strong>{materials.length}</strong>
-          <span>공유 중인 자료</span>
-        </div>
-        <i />
-        <div>
-          <strong>{Math.max(uniqueTeachers, 1)}</strong>
-          <span>참여 선생님</span>
-        </div>
-        <i />
-        <div>
-          <strong>2</strong>
-          <span>자료 컬렉션</span>
-        </div>
-        <i />
-        <div className="status-stat">
-          <span className="status-orb" />
-          <p>
-            <strong>자동 업데이트</strong>
-            <span>제출 후 검토·배포·등록까지 한 번에</span>
-          </p>
         </div>
       </section>
 
