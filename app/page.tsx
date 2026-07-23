@@ -298,9 +298,9 @@ export default function Home() {
             OCEAN MIDDLE SCHOOL · TEACHER-MADE
           </p>
           <h1>
-            선생님의 좋은 아이디어가
+            선생님이 좋은 아이디어가
             <br />
-            <em>모두의 수업과 업무</em>가 됩니다.
+            <em>수업 효율화와 업무간화</em>에 큰 힘이 됩니다
           </h1>
           <p className="hero-copy">
             오션중학교 선생님들이 직접 만든 웹앱과 교육자료를 한곳에서
