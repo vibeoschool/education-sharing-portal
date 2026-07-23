@@ -567,6 +567,16 @@ export default function Home() {
               <p>배포된 첫 화면을 대표 이미지로 만들고 자료 목록에 반영합니다.</p>
             </div>
           </li>
+          <li>
+            <span>04</span>
+            <div>
+              <strong>개별 앱 업데이트 자동 반영</strong>
+              <p>
+                원본 GitHub 저장소의 변경사항을 10분 이내 학교 복제본과 배포
+                사이트에 자동 반영합니다.
+              </p>
+            </div>
+          </li>
         </ol>
       </section>
 
