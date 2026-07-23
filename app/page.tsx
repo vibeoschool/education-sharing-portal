@@ -89,7 +89,7 @@ function ArrowIcon() {
 }
 
 function LockIcon() {
-  return <span aria-hidden="true">●</span>;
+  return <span className="key-icon" aria-hidden="true" />;
 }
 
 function MaterialCard({ material, index }: { material: Material; index: number }) {
@@ -403,7 +403,11 @@ export default function Home() {
                 onClick={() => setActiveType(type)}
                 aria-pressed={activeType === type}
               >
-                {type === "교직원 전용" && <span className="tab-lock">●</span>}
+                {type === "교직원 전용" && (
+                  <span className="tab-lock">
+                    <LockIcon />
+                  </span>
+                )}
                 {type}
                 {type === "전체" && <span className="tab-count">{materials.length}</span>}
               </button>
