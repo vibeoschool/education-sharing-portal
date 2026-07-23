@@ -337,8 +337,8 @@ export default function Home() {
               <em>수업 효율화와 업무간소화</em>에 큰 힘이 됩니다
             </h1>
             <p className="hero-copy">
-              오션중학교 선생님들이 직접 만든 웹앱과 교육자료를 한곳에서
-              발견하고, 바로 수업과 학교 업무에 활용하세요.
+              오션중학교 선생님들이 직접 만든 웹앱과 교육자료를 수업과 학교
+              업무에 바로 활용하세요.
             </p>
 
             <form className="hero-search" onSubmit={submitSearch}>
