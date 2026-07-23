@@ -548,52 +548,21 @@ select:focus-visible {
   flex: 0 0 auto;
   display: grid;
   place-items: center;
-  color: var(--coral-600);
   border-radius: 10px;
   background: var(--coral-100);
 }
 
-.key-icon {
-  position: relative;
+.lock-image {
   width: 18px;
   height: 18px;
   flex: 0 0 auto;
-  display: inline-block;
-  color: currentColor;
-  transform: rotate(-8deg);
+  object-fit: contain;
 }
 
-.key-icon::before {
-  content: "";
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  left: 1px;
-  top: 1px;
-  border: 2.5px solid currentColor;
-  border-radius: 50%;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
-}
-
-.key-icon::after {
-  content: "";
-  position: absolute;
-  width: 11px;
-  height: 3px;
-  left: 7px;
-  top: 10px;
-  border-radius: 0 3px 3px 0;
-  background: currentColor;
-  box-shadow: 5px 3px 0 -1px currentColor;
-  transform: rotate(39deg);
-  transform-origin: left center;
-}
-
-.mini-lock .key-icon {
-  width: 20px;
-  height: 20px;
-  color: var(--coral-600);
-  filter: drop-shadow(0 3px 5px rgba(239, 97, 77, 0.2));
+.mini-lock .lock-image {
+  width: 25px;
+  height: 25px;
+  filter: drop-shadow(0 3px 5px rgba(7, 28, 44, 0.2));
 }
 
 .privacy-note p {
@@ -695,9 +664,9 @@ select:focus-visible {
   place-items: center;
 }
 
-.tab-lock .key-icon {
-  width: 14px;
-  height: 14px;
+.tab-lock .lock-image {
+  width: 17px;
+  height: 17px;
 }
 
 .filter-actions {
@@ -946,11 +915,10 @@ select:focus-visible {
   background: rgba(7, 28, 44, 0.86);
 }
 
-.access-chip.staff .key-icon {
-  width: 14px;
-  height: 14px;
-  color: var(--seafoam-300);
-  filter: drop-shadow(0 2px 4px rgba(101, 216, 193, 0.25));
+.access-chip.staff .lock-image {
+  width: 16px;
+  height: 16px;
+  filter: drop-shadow(0 2px 4px rgba(101, 216, 193, 0.28));
 }
 
 .card-body {

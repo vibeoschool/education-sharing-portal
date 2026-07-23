@@ -95,7 +95,17 @@ function ArrowIcon() {
 }
 
 function LockIcon() {
-  return <span className="key-icon" aria-hidden="true" />;
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      className="lock-image"
+      src="/staff-padlock.png"
+      alt=""
+      width={20}
+      height={20}
+      aria-hidden="true"
+    />
+  );
 }
 
 function MaterialCard({ material, index }: { material: Material; index: number }) {
