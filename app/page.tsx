@@ -124,9 +124,12 @@ function MaterialCard({ material, index }: { material: Material; index: number }
         ? "tool"
         : "learn";
   const isAvailable = material.status !== "검토 중" && Boolean(material.url);
+  const cardStyle = {
+    "--delay": `${index * 45}ms`,
+  } as React.CSSProperties;
 
-  return (
-    <article className="material-card" style={{ "--delay": `${index * 45}ms` } as React.CSSProperties}>
+  const cardContent = (
+    <>
       <div className={`card-visual visual-${(index % 4) + 1}`}>
         {material.thumbnail ? (
           // Screenshots are produced by the deployment workflow and may live on GitHub.
@@ -175,21 +178,38 @@ function MaterialCard({ material, index }: { material: Material; index: number }
             </span>
           </div>
           {isAvailable ? (
-            <a
+            <span
               className={`open-button ${material.staffOnly ? "locked" : ""}`}
-              href={material.url}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`${material.title} ${material.staffOnly ? "학교 Google 로그인 후 " : ""}열기`}
             >
               {material.staffOnly ? "Google 로그인" : "자료 열기"}
               <ArrowIcon />
-            </a>
+            </span>
           ) : (
             <span className="review-state">검토 중</span>
           )}
         </div>
       </div>
+    </>
+  );
+
+  if (isAvailable) {
+    return (
+      <a
+        className="material-card material-card-link"
+        style={cardStyle}
+        href={material.url}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`${material.title} ${material.staffOnly ? "학교 Google 로그인 후 " : ""}새 탭에서 열기`}
+      >
+        {cardContent}
+      </a>
+    );
+  }
+
+  return (
+    <article className="material-card" style={cardStyle}>
+      {cardContent}
     </article>
   );
 }

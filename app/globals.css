@@ -742,6 +742,12 @@ select:focus-visible {
     box-shadow 220ms ease;
 }
 
+.material-card-link {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .material-card:hover {
   border-color: rgba(101, 216, 193, 0.78);
   box-shadow: var(--shadow-lg);
