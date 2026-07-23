@@ -63,3 +63,28 @@ test("keeps review submissions non-clickable until the catalog activates them", 
     [],
   );
 });
+
+test("uses a responsive four-card desktop catalog and top-aligned previews", async () => {
+  const css = await readFile(
+    new URL("../app/globals.css", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(
+    css,
+    /\.card-grid\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\)/,
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 1120px\)[\s\S]*?repeat\(3, minmax\(0, 1fr\)\)/,
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 900px\)[\s\S]*?repeat\(2, minmax\(0, 1fr\)\)/,
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 640px\)[\s\S]*?\.card-grid\s*\{\s*grid-template-columns:\s*1fr/,
+  );
+  assert.match(css, /object-position:\s*top center/);
+});
