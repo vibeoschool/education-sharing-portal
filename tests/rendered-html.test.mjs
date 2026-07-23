@@ -35,6 +35,12 @@ test("server-renders the education sharing portal and pending review card", asyn
   assert.match(html, /수업 효율화와 업무간소화/);
   assert.match(html, /정답 보드판/);
   assert.match(html, /최은지(?:<!-- -->)? 선생님/);
+  assert.match(html, /개인정보를 처리 및 보관하는 앱은 웹 배포 불가/);
+  assert.match(
+    html,
+    /학생 혹은 교원 개인정보 관련 내용이 처리되는 경우 웹 배포 불가입니다/,
+  );
+  assert.match(html, /개인정보를 처리·저장하지 않는 웹앱만 등록할 수 있습니다/);
   assert.match(html, /교과 시간에 조별로 퀴즈 답을 제출하고 확인하는 수업 도구입니다\./);
   assert.match(html, /class="access-chip review">안전 검토 중<\/span>/);
   assert.match(html, /class="review-state">검토 중<\/span>/);

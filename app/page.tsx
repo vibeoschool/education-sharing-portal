@@ -585,10 +585,10 @@ export default function Home() {
           <li>
             <span>02</span>
             <div>
-              <strong>개인정보·보안 검토</strong>
+              <strong>개인정보를 처리 및 보관하는 앱은 웹 배포 불가</strong>
               <p>
-                학생정보 관련 내용이 처리되는 경우 사전 검토를 거치고, 교직원
-                로그인 적용 여부를 먼저 확인합니다.
+                학생 혹은 교원 개인정보 관련 내용이 처리되는 경우 웹 배포
+                불가입니다.
               </p>
             </div>
           </li>
@@ -621,7 +621,10 @@ export default function Home() {
         <div>
           <p className="section-kicker">SHARE YOUR IDEA</p>
           <h2>새로운 교육자료를 만들고 계신가요?</h2>
-          <p>선생님의 작은 아이디어가 오션중학교 모두의 시간을 아껴줍니다.</p>
+          <p>
+            개인정보를 처리·저장하지 않는 웹앱만 등록할 수 있습니다. 선생님의
+            작은 아이디어가 오션중학교 모두의 시간을 아껴줍니다.
+          </p>
         </div>
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSeE01BtZ9vZcxxItjoNduSKKcv6evGpsmhUyGUeREriXu1hhw/viewform"
@@ -649,7 +652,7 @@ export default function Home() {
           </p>
         </div>
         <p className="footer-note">
-          공개 목록에는 학생 개인정보를 표시하지 않습니다.
+          학생·교사 개인정보를 처리·저장하는 앱은 접수·배포하지 않습니다.
           <br />© 2026 Ocean Middle School.
         </p>
       </footer>
