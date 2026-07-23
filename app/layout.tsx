@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       title: "오션중학교 교육자료 나눔터",
-      description: "선생님이 좋은 아이디어가 수업 효율화와 업무간화에 큰 힘이 됩니다",
+      description: "선생님의 좋은 아이디어가 수업 효율화와 업무간소화에 큰 힘이 됩니다",
       type: "website",
       locale: "ko_KR",
       images: imageUrl
@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: "오션중학교 교육자료 나눔터",
-      description: "선생님이 좋은 아이디어가 수업 효율화와 업무간화에 큰 힘이 됩니다",
+      description: "선생님의 좋은 아이디어가 수업 효율화와 업무간소화에 큰 힘이 됩니다",
       images: imageUrl ? [imageUrl] : undefined,
     },
   };
