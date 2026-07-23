@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "오션중학교 교육자료 나눔터",
     description:
-      "오션중학교 선생님들이 직접 만든 업무간소화 웹앱과 교수학습자료를 찾고 활용하는 공개 자료 나눔터입니다.",
+      "오션중학교 선생님들이 직접 만든 업무간소화 웹앱, 교수학습자료, 수업도구를 찾고 활용하는 공개 자료 나눔터입니다.",
     icons: {
       icon: "/ocean-middle-school-logo.jpg",
       shortcut: "/ocean-middle-school-logo.jpg",

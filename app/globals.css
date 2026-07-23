@@ -932,6 +932,11 @@ select:focus-visible {
   background: rgba(255, 232, 226, 0.94);
 }
 
+.type-chip.tool {
+  color: #173a58;
+  background: rgba(231, 244, 248, 0.95);
+}
+
 .access-chip.public {
   color: var(--navy-900);
   background: rgba(255, 255, 255, 0.9);

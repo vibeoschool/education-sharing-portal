@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
 
-type MaterialType = "업무간소화" | "교수학습자료";
+type MaterialType = "업무간소화" | "교수학습자료" | "수업도구";
 
 type Material = {
   id: string;
@@ -68,7 +68,13 @@ const fallbackMaterials: Material[] = [
   },
 ];
 
-const typeOptions = ["전체", "업무간소화", "교수학습자료", "교직원 전용"] as const;
+const typeOptions = [
+  "전체",
+  "업무간소화",
+  "교수학습자료",
+  "수업도구",
+  "교직원 전용",
+] as const;
 
 function formatDate(date: string) {
   const parsed = new Date(date);
@@ -94,7 +100,19 @@ function LockIcon() {
 
 function MaterialCard({ material, index }: { material: Material; index: number }) {
   const labels =
-    material.type === "교수학습자료" ? material.subjects : material.tags;
+    material.type === "업무간소화" ? material.tags : material.subjects;
+  const visualLabel =
+    material.type === "업무간소화"
+      ? "업무"
+      : material.type === "수업도구"
+        ? "도구"
+        : "배움";
+  const typeClass =
+    material.type === "업무간소화"
+      ? "work"
+      : material.type === "수업도구"
+        ? "tool"
+        : "learn";
   const isAvailable = material.status !== "검토 중" && Boolean(material.url);
 
   return (
@@ -108,13 +126,11 @@ function MaterialCard({ material, index }: { material: Material; index: number }
           <div className="visual-placeholder" aria-hidden="true">
             <span className="visual-orbit" />
             <span className="visual-grid" />
-            <span className="visual-letter">
-              {material.type === "교수학습자료" ? "배움" : "업무"}
-            </span>
+            <span className="visual-letter">{visualLabel}</span>
           </div>
         )}
         <div className="visual-topline">
-          <span className={`type-chip ${material.type === "업무간소화" ? "work" : "learn"}`}>
+          <span className={`type-chip ${typeClass}`}>
             {material.type}
           </span>
           {material.staffOnly ? (
@@ -207,7 +223,9 @@ export default function Home() {
 
   const detailOptions = useMemo(() => {
     if (activeType === "업무간소화") return workTags;
-    if (activeType === "교수학습자료") return subjects;
+    if (activeType === "교수학습자료" || activeType === "수업도구") {
+      return subjects;
+    }
     return [...workTags, ...subjects];
   }, [activeType]);
 
@@ -247,15 +265,14 @@ export default function Home() {
     });
   }, [activeDetail, activeType, materials, sort, submittedQuery]);
 
-  const uniqueTeachers = useMemo(
-    () => new Set(materials.map((material) => material.author)).size,
-    [materials],
-  );
   const workMaterialCount = materials.filter(
     (material) => material.type === "업무간소화",
   ).length;
   const learningMaterialCount = materials.filter(
     (material) => material.type === "교수학습자료",
+  ).length;
+  const teachingToolCount = materials.filter(
+    (material) => material.type === "수업도구",
   ).length;
 
   function submitSearch(event: FormEvent<HTMLFormElement>) {
@@ -337,16 +354,16 @@ export default function Home() {
               <span>공유된 자료</span>
             </div>
             <div>
-              <strong>{Math.max(uniqueTeachers, 1)}</strong>
-              <span>참여 선생님</span>
-            </div>
-            <div>
               <strong>{workMaterialCount}</strong>
-              <span>업무 도구</span>
+              <span>업무간소화</span>
             </div>
             <div>
               <strong>{learningMaterialCount}</strong>
-              <span>수업 자료</span>
+              <span>교수학습자료</span>
+            </div>
+            <div>
+              <strong>{teachingToolCount}</strong>
+              <span>수업도구</span>
             </div>
           </aside>
 
