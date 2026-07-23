@@ -529,7 +529,7 @@ export default function Home() {
           <li>
             <span>01</span>
             <div>
-              <strong>구글폼 제출</strong>
+              <strong>구글폼 제출(오션중 선생님만 가능)</strong>
               <p>자료 설명, 분류, 공개 범위와 GitHub 주소를 입력합니다.</p>
             </div>
           </li>
