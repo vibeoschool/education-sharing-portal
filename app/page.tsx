@@ -77,7 +77,7 @@ const reviewMaterials: Material[] = [
     type: "수업도구",
     tags: [],
     subjects: ["범교과"],
-    author: "오션중학교",
+    author: "최은지",
     url: "",
     staffOnly: false,
     updatedAt: "2026-07-23T06:21:46.000Z",

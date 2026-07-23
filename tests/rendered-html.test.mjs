@@ -34,6 +34,7 @@ test("server-renders the education sharing portal and pending review card", asyn
   assert.match(html, /<title>오션중학교 교육자료 나눔터<\/title>/);
   assert.match(html, /수업 효율화와 업무간소화/);
   assert.match(html, /정답 보드판/);
+  assert.match(html, /최은지(?:<!-- -->)? 선생님/);
   assert.match(html, /교과 시간에 조별로 퀴즈 답을 제출하고 확인하는 수업 도구입니다\./);
   assert.match(html, /class="access-chip review">안전 검토 중<\/span>/);
   assert.match(html, /class="review-state">검토 중<\/span>/);
