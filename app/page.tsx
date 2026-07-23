@@ -265,9 +265,14 @@ export default function Home() {
     <main>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="오션중학교 교육자료 나눔터 홈">
-          <span className="brand-symbol" aria-hidden="true">
-            O
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="brand-logo"
+            src="/ocean-middle-school-logo.jpg"
+            alt=""
+            width={44}
+            height={45}
+          />
           <span>
             <strong>오션중학교</strong>
             <small>교육자료 나눔터</small>
@@ -535,9 +540,14 @@ export default function Home() {
 
       <footer>
         <div className="footer-brand">
-          <span className="brand-symbol" aria-hidden="true">
-            O
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="brand-logo"
+            src="/ocean-middle-school-logo.jpg"
+            alt=""
+            width={36}
+            height={37}
+          />
           <p>
             <strong>오션중학교 교육자료 나눔터</strong>
             <span>선생님의 아이디어로 함께 만드는 더 나은 학교</span>

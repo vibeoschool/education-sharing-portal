@@ -13,8 +13,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "오션중학교 선생님들이 직접 만든 업무간소화 웹앱과 교수학습자료를 찾고 활용하는 공개 자료 나눔터입니다.",
     icons: {
-      icon: "/favicon.svg",
-      shortcut: "/favicon.svg",
+      icon: "/ocean-middle-school-logo.jpg",
+      shortcut: "/ocean-middle-school-logo.jpg",
     },
     openGraph: {
       title: "오션중학교 교육자료 나눔터",
