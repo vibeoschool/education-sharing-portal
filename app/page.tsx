@@ -557,7 +557,10 @@ export default function Home() {
             <span>02</span>
             <div>
               <strong>개인정보·보안 검토</strong>
-              <p>학생정보 처리와 교직원 로그인 적용 여부를 먼저 확인합니다.</p>
+              <p>
+                학생정보 관련 내용이 처리되는 경우 사전 검토를 거치고, 교직원
+                로그인 적용 여부를 먼저 확인합니다.
+              </p>
             </div>
           </li>
           <li>
