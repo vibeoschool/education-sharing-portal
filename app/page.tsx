@@ -68,6 +68,31 @@ const fallbackMaterials: Material[] = [
   },
 ];
 
+const reviewMaterials: Material[] = [
+  {
+    id: "APP-DDD053B5531F",
+    title: "정답 보드판",
+    description:
+      "교과 시간에 조별로 퀴즈 답을 제출하고 확인하는 수업 도구입니다.",
+    type: "수업도구",
+    tags: [],
+    subjects: ["범교과"],
+    author: "오션중학교",
+    url: "",
+    staffOnly: false,
+    updatedAt: "2026-07-23T06:21:46.000Z",
+    status: "검토 중",
+  },
+];
+
+function includeReviewMaterials(materials: Material[]) {
+  const catalogIds = new Set(materials.map((material) => material.id));
+  return [
+    ...reviewMaterials.filter((material) => !catalogIds.has(material.id)),
+    ...materials,
+  ];
+}
+
 const typeOptions = [
   "전체",
   "업무간소화",
@@ -146,7 +171,9 @@ function MaterialCard({ material, index }: { material: Material; index: number }
           <span className={`type-chip ${typeClass}`}>
             {material.type}
           </span>
-          {material.staffOnly ? (
+          {material.status === "검토 중" ? (
+            <span className="access-chip review">안전 검토 중</span>
+          ) : material.staffOnly ? (
             <span className="access-chip staff">
               <LockIcon /> 교직원 전용
             </span>
@@ -215,7 +242,9 @@ function MaterialCard({ material, index }: { material: Material; index: number }
 }
 
 export default function Home() {
-  const [materials, setMaterials] = useState<Material[]>(fallbackMaterials);
+  const [materials, setMaterials] = useState<Material[]>(
+    includeReviewMaterials(fallbackMaterials),
+  );
   const [query, setQuery] = useState("");
   const [submittedQuery, setSubmittedQuery] = useState("");
   const [activeType, setActiveType] = useState<(typeof typeOptions)[number]>("전체");
@@ -234,7 +263,7 @@ export default function Home() {
         const data = (await response.json()) as Material[] | { materials: Material[] };
         const nextMaterials = Array.isArray(data) ? data : data.materials;
         if (active && Array.isArray(nextMaterials) && nextMaterials.length > 0) {
-          setMaterials(nextMaterials);
+          setMaterials(includeReviewMaterials(nextMaterials));
           setCatalogUpdated(true);
         }
       } catch {

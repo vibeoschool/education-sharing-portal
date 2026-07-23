@@ -921,6 +921,11 @@ select:focus-visible {
   background: rgba(7, 28, 44, 0.86);
 }
 
+.access-chip.review {
+  color: #71460b;
+  background: rgba(255, 238, 194, 0.94);
+}
+
 .access-chip.staff .lock-image {
   width: 16px;
   height: 16px;
