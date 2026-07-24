@@ -41,6 +41,8 @@ test("server-renders the education sharing portal and pending review card", asyn
     /학생 혹은 교원 개인정보 관련 내용이 처리되는 경우 웹 배포 불가입니다/,
   );
   assert.match(html, /개인정보를 처리·저장하지 않는 웹앱만 등록할 수 있습니다/);
+  assert.match(html, /<strong>저작권 준수<\/strong>/);
+  assert.match(html, /내용, 이미지 등 관련하여 저작권 지침을 준수합니다\./);
   assert.match(html, /교과 시간에 조별로 퀴즈 답을 제출하고 확인하는 수업 도구입니다\./);
   assert.match(html, /class="access-chip review">안전 검토 중<\/span>/);
   assert.match(html, /class="review-state">검토 중<\/span>/);

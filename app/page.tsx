@@ -594,8 +594,8 @@ export default function Home() {
           <li>
             <span>03</span>
             <div>
-              <strong>자동 배포·화면 캡처</strong>
-              <p>배포된 첫 화면을 대표 이미지로 만들고 자료 목록에 반영합니다.</p>
+              <strong>저작권 준수</strong>
+              <p>내용, 이미지 등 관련하여 저작권 지침을 준수합니다.</p>
             </div>
           </li>
           <li>
