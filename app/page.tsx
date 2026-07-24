@@ -288,10 +288,6 @@ export default function Home() {
     return [...workTags, ...subjects];
   }, [activeType]);
 
-  useEffect(() => {
-    setActiveDetail("전체 분야");
-  }, [activeType]);
-
   const filteredMaterials = useMemo(() => {
     const normalizedQuery = submittedQuery.trim().toLocaleLowerCase("ko-KR");
     const next = materials.filter((material) => {
@@ -476,7 +472,10 @@ export default function Home() {
               <button
                 className={activeType === type ? "active" : ""}
                 key={type}
-                onClick={() => setActiveType(type)}
+                onClick={() => {
+                  setActiveType(type);
+                  setActiveDetail("전체 분야");
+                }}
                 aria-pressed={activeType === type}
               >
                 {type === "교직원 전용" && (
