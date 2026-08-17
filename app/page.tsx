@@ -86,6 +86,12 @@ function formatDate(date: string) {
   }).format(parsed);
 }
 
+function formatAuthor(author: string) {
+  return /(?:선생님|교감|교장|교사|주무관|실장|부장)(?:\s*,|\s*·|\s*$)/.test(author)
+    ? author
+    : `${author} 선생님`;
+}
+
 function SearchIcon() {
   return <span aria-hidden="true">⌕</span>;
 }
@@ -175,7 +181,7 @@ function MaterialCard({ material, index }: { material: Material; index: number }
               {material.author.slice(0, 1)}
             </span>
             <span>
-              <strong>{material.author} 선생님</strong>
+              <strong>{formatAuthor(material.author)}</strong>
               <small>제작 · {formatDate(material.updatedAt)} 업데이트</small>
             </span>
           </div>
