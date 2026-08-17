@@ -25,7 +25,7 @@ async function render() {
   );
 }
 
-test("server-renders the education sharing portal and pending review card", async () => {
+test("server-renders the education sharing portal without rejected review cards", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
@@ -33,8 +33,6 @@ test("server-renders the education sharing portal and pending review card", asyn
   const html = await response.text();
   assert.match(html, /<title>오션중학교 교육자료 나눔터<\/title>/);
   assert.match(html, /수업 효율화와 업무간소화/);
-  assert.match(html, /정답 보드판/);
-  assert.match(html, /최은지(?:<!-- -->)? 선생님/);
   assert.match(html, /개인정보를 처리 및 보관하는 앱은 웹 배포 불가/);
   assert.match(
     html,
@@ -43,25 +41,20 @@ test("server-renders the education sharing portal and pending review card", asyn
   assert.match(html, /개인정보를 처리·저장하지 않는 웹앱만 등록할 수 있습니다/);
   assert.match(html, /<strong>저작권 준수<\/strong>/);
   assert.match(html, /내용, 이미지 등 관련하여 저작권 지침을 준수합니다\./);
-  assert.match(html, /교과 시간에 조별로 퀴즈 답을 제출하고 확인하는 수업 도구입니다\./);
-  assert.match(html, /class="access-chip review">안전 검토 중<\/span>/);
-  assert.match(html, /class="review-state">검토 중<\/span>/);
+  assert.doesNotMatch(html, /정답 보드판/);
+  assert.doesNotMatch(html, /안전 검토 중/);
   assert.doesNotMatch(html, /chloechoiej|1234|학생 실명|학번 입력 금지/);
 });
 
-test("keeps review submissions non-clickable until the catalog activates them", async () => {
+test("does not bundle manually curated review submissions", async () => {
   const [page, layout, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
 
-  assert.match(page, /id:\s*"APP-DDD053B5531F"/);
-  assert.match(page, /url:\s*""/);
-  assert.match(page, /status:\s*"검토 중"/);
-  assert.match(page, /includeReviewMaterials/);
+  assert.doesNotMatch(page, /APP-DDD053B5531F|includeReviewMaterials/);
   assert.match(page, /material\.status !== "검토 중"/);
-  assert.match(page, /catalogIds\.has\(material\.id\)/);
   assert.match(layout, /title:\s*"오션중학교 교육자료 나눔터"/);
   assert.doesNotMatch(layout, /codex-preview|_sites-preview/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
